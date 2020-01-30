@@ -30,9 +30,9 @@ class RootQueryFormsConnectionResolver extends AbstractConnectionResolver {
      *
      * @return string Base-64 encoded cursor value.
      */
-	protected function get_cursor_for_node( $node, $key = null ) : string {
-		return base64_encode( ArrayConnection::PREFIX . $node['formId'] );
-	}
+    protected function get_cursor_for_node( $node, $key = null ) : string {
+        return base64_encode( ArrayConnection::PREFIX . $node['formId'] );
+    }
 
     /**
      * @return array Query to use for data fetching.
@@ -45,9 +45,9 @@ class RootQueryFormsConnectionResolver extends AbstractConnectionResolver {
      * @return array The fields for this Gravity Forms form.
      */
     public function get_items() : array {
-		$forms = GFAPI::get_forms(
-			true,
-			false
+        $forms = GFAPI::get_forms(
+            true,
+            false
         );
 
         if ( is_wp_error( $forms ) ) {

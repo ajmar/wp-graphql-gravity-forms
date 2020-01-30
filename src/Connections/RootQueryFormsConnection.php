@@ -24,18 +24,14 @@ class RootQueryFormsConnection implements Hookable, Connection {
             'fromType'      => 'RootQuery',
             'toType'        => Form::TYPE,
             'fromFieldName' => self::FROM_FIELD,
-            'connectionArgs' => [
-                'formIds' => [
-                    'type'        => [ 'list_of' => 'ID' ],
-                    'description' => __( 'Array of form IDs to limit the forms to. Exclude this argument to query all forms.', 'wp-graphql-gravity-forms' ),
-                ],
-            ],
             'resolve' => function( $root, array $args, AppContext $context, ResolveInfo $info ) : array {
                 /**
                  * Filter to control whether the user should be allowed to view forms.
                  *
                  * @param bool  Whether the current user should be allowed to view forms.
                  * @param array The form IDs to get forms by.
+                 *
+                 * TODO: Is gravityforms_preview_forms correct?
                  */
                 $can_user_view_forms = apply_filters( 'wp_graphql_gf_can_view_forms', current_user_can( 'gravityforms_preview_forms' ), $this->get_form_ids( $args ) );
 
@@ -54,5 +50,5 @@ class RootQueryFormsConnection implements Hookable, Connection {
         }
 
         return [];
-    }
+	}
 }
