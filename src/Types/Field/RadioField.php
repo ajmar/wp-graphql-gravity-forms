@@ -30,6 +30,7 @@ class RadioField extends Field {
             'fields'      => array_merge(
                 $this->get_global_properties(),
                 FieldProperty\ChoicesProperty::get(),
+                FieldProperty\DescriptionProperty::get(),
                 FieldProperty\EnableChoiceValueProperty::get(),
                 FieldProperty\ErrorMessageProperty::get(),
                 FieldProperty\InputNameProperty::get(),
@@ -41,7 +42,7 @@ class RadioField extends Field {
                         'type'        => 'Boolean',
                         'description' => __( 'Indicates whether the \'Enable "other" choice\' option is checked in the editor.', 'wp-graphql-gravity-forms' ),
                     ],
-                ],
+                ]
             ),
         ] );
     }

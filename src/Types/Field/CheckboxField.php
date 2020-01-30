@@ -30,6 +30,7 @@ class CheckboxField extends Field {
             'fields'      => array_merge(
                 $this->get_global_properties(),
                 FieldProperty\ChoicesProperty::get(),
+                FieldProperty\DescriptionProperty::get(),
                 FieldProperty\EnableChoiceValueProperty::get(),
                 FieldProperty\ErrorMessageProperty::get(),
                 FieldProperty\InputNameProperty::get(),
@@ -38,8 +39,12 @@ class CheckboxField extends Field {
                 [
                     'inputs' => [
                         'type'        => [ 'list_of' => FieldProperty\CheckboxInputProperty::TYPE ],
-                        'description' => __('List of inputs. Checkboxes are treated as multi-input fields, since each checkbox item is stored separately.', 'wp-graphql-gravity-forms'),
+                        'description' => __( 'List of inputs. Checkboxes are treated as multi-input fields, since each checkbox item is stored separately.', 'wp-graphql-gravity-forms' ),
                     ],
+                    'enableSelectAll' => [
+                        'type'        => 'Boolean',
+                        'description' => __( 'Whether the "select all" choice should be displayed.', 'wp-graphql-gravity-forms' ),
+                    ]
                 ]
             ),
         ] );
